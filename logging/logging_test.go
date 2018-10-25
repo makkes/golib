@@ -5,7 +5,7 @@ import (
 	"log"
 	"testing"
 
-	"github.com/justsocialapps/assert"
+	"github.com/makkes/assert"
 )
 
 func TestLevelFromStringShouldBeCaseInsensitive(t *testing.T) {
