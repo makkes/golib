@@ -1,7 +1,12 @@
 # Go Lib [![GoDoc](https://godoc.org/github.com/makkes/golib?status.svg)](https://godoc.org/github.com/makkes/golib) [![Build Status](https://travis-ci.org/makkes/golib.svg?branch=master)](https://travis-ci.org/makkes/golib)
 
-My Go standard library for cross-cutting concerns. This repo contains utility
-functions that I need in my day-to-day Go programming work.
+Go standard library for cross-cutting concerns. This repo contains utility
+functions that one might need in day-to-day Go programming work. Currently Golib
+covers the following topics:
+
+* Conditional repeated function calling
+* Job dispatching using Goroutines
+* Configurable logging
 
 ## Installation
 
