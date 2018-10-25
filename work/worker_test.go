@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/justsocialapps/assert"
-	"github.com/justsocialapps/justlib/work"
+	"github.com/makkes/assert"
+	"github.com/makkes/golib/work"
 )
 
 func Example() {

@@ -1,6 +1,6 @@
-// Package justlib contains handy utility functions to make your day-to-day Go
+// Package golib contains handy utility functions to make your day-to-day Go
 // programming more pleasant.
-package justlib
+package golib
 
 import "time"
 

@@ -1,4 +1,4 @@
-package justlib
+package golib
 
 import (
 	"errors"
@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/justsocialapps/assert"
+	"github.com/makkes/assert"
 )
 
 func TestMain(m *testing.M) {
