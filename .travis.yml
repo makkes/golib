@@ -1,0 +1,8 @@
+language: go
+install:
+    - go get github.com/alecthomas/gometalinter
+    - go get github.com/justsocialapps/assert
+script:
+    - gometalinter --install
+    - gometalinter -D errcheck ./...
+    - go test ./...
