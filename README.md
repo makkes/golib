@@ -1,25 +1,17 @@
-# Justlib [![GoDoc](https://godoc.org/gopkg.in/justsocialapps/justlib.v1?status.svg)](https://godoc.org/gopkg.in/justsocialapps/justlib.v1) [![Build Status](https://travis-ci.org/justsocialapps/justlib.svg?branch=v1)](https://travis-ci.org/justsocialapps/justlib)
+# Go Lib [![GoDoc](https://godoc.org/github.com/makkes/golib?status.svg)](https://godoc.org/github.com/makkes/golib) [![Build Status](https://travis-ci.org/makkes/golib.svg?branch=master)](https://travis-ci.org/makkes/golib)
 
-[Just Social's](https://just.social) Go standard library extensions. This repo
-contains utility functions that we need in our day-to-day Go programming work.
+My Go standard library for cross-cutting concerns. This repo contains utility
+functions that I need in my day-to-day Go programming work.
 
 ## Installation
 
-### Stable branch
-
 ```sh
-go get gopkg.in/justsocialapps/justlib.v1
-```
-
-### Development branch
-
-```sh
-go get github.com/justsocialapps/justlib
+go get github.com/makkes/golib
 ```
 
 ## Documentation
 
-See the [GoDoc](https://godoc.org/gopkg.in/justsocialapps/justlib.v1) for
+See the [GoDoc](https://godoc.org/github.com/makkes/golib) for
 reference documentation.
 
 ## License
