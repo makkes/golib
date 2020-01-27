@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
+	"e13.dev/golib/work"
 	"github.com/makkes/assert"
-	"github.com/makkes/golib/work"
 )
 
 func Example() {
