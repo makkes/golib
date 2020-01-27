@@ -1,0 +1,40 @@
+run:
+  skip-files:
+    - "zz_.+\\.go$"
+  deadline: 3m
+
+linters:
+  disable-all: true
+  enable:
+    - deadcode
+    - depguard
+    - goconst
+    - gocritic
+    - gocyclo
+    - gofmt
+    - goimports
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - prealloc
+    - structcheck
+    - stylecheck
+    - typecheck
+    - unconvert
+    - unparam
+    - unused
+    - varcheck
+    - whitespace
+
+linters-settings:
+  lll:
+    line-length: 197
+  goimports:
+    local-prefixes: github.com/mesosphere/kommander-cluster-lifecycle
+  depguard:
+    list-type: blacklist
+    packages:
+    - k8s.io/kubernetes
+    packages-with-error-messages:
+      k8s.io/kubernetes: "do not use k8s.io/kubernetes directly"

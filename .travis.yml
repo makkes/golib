@@ -1,8 +1,5 @@
 language: go
 install:
-    - go get github.com/alecthomas/gometalinter
-    - go get github.com/makkes/assert
+    - pip install pre-commit
 script:
-    - gometalinter --install
-    - gometalinter -D errcheck ./...
-    - go test ./...
+    - make test

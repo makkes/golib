@@ -105,7 +105,6 @@ func NewWorker(workerCount int, workerFunc func(Payload) interface{}, strictComp
 	}
 
 	return worker
-
 }
 
 // Completions returns a channel that is sent a value to every time when a job

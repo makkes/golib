@@ -37,7 +37,7 @@ func LevelFromString(s string) (*Level, error) {
 			return &k, nil
 		}
 	}
-	return nil, errors.New("No such level name exists")
+	return nil, errors.New("no such level name exists")
 }
 
 func (l Level) String() string {
