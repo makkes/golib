@@ -34,7 +34,7 @@ repos:
     stages: [commit]
     args: ["-e", "SC2211"]
 - repo: https://github.com/golangci/golangci-lint
-  rev: v1.23.1
+  rev: v1.37.0
   hooks:
   - id: golangci-lint
     args: ["--fix", "-c", ".golangci.yml"]
