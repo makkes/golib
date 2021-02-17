@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"e13.dev/golib/work"
-	"github.com/makkes/assert"
+	"github.com/stretchr/testify/assert"
+	"go.e13.dev/golib/work"
 )
 
 func Example() {
@@ -39,7 +39,7 @@ func TestDispatchShouldReturnErrorWhenWorkerIsShutDown(t *testing.T) {
 	}, true)
 	worker.Quit()
 	err := worker.Dispatch(work.Payload{})
-	assert.NewAssert(t).NotNil(err, "Dispatch returned no error")
+	assert.Error(t, err, "Dispatch returned no error")
 }
 
 func TestCallingQuitMultipleTimesShouldNotBlock(t *testing.T) {
@@ -56,7 +56,7 @@ func TestQuitShouldCloseCompletionsChannel(t *testing.T) {
 	}, true)
 	worker.Quit()
 	_, ok := <-worker.Completions()
-	assert.NewAssert(t).Equal(ok, false, "The completions channel was not closed")
+	assert.Equal(t, false, ok, "The completions channel was not closed")
 }
 
 func TestQuitShouldAscertainThatAllJobsHaveCompleted(t *testing.T) {
@@ -76,12 +76,12 @@ func TestQuitShouldAscertainThatAllJobsHaveCompleted(t *testing.T) {
 
 	worker.Quit()
 
-	assert.NewAssert(t).Equal(len(resCh), 100, "Not all jobs were completed")
+	assert.Equal(t, 100, len(resCh), "Not all jobs were completed")
 }
 
 func TestJobCountShouldReturnZeroWithNoJobsDispatched(t *testing.T) {
 	worker := work.NewWorker(99, func(p work.Payload) interface{} { return nil }, false)
-	assert.NewAssert(t).Equal(worker.JobCount(), 0, "Job count is wrong")
+	assert.Equal(t, 0, worker.JobCount(), "Job count is wrong")
 }
 
 func TestJobCountShouldReturnCorrectValue(t *testing.T) {
@@ -102,14 +102,14 @@ func TestJobCountShouldReturnCorrectValue(t *testing.T) {
 			t.Fail()
 		}
 		<-startCh
-		assert.NewAssert(t).Equal(worker.JobCount(), i+1, "Job count is wrong")
+		assert.Equal(t, i+1, worker.JobCount(), "Job count is wrong")
 	}
 
 	// iteratively stop jobs and check job count
 	for i := workers; i > 0; i-- {
 		quitCh <- struct{}{}
 		<-worker.Completions()
-		assert.NewAssert(t).Equal(worker.JobCount(), i-1, "Job count is wrong")
+		assert.Equal(t, i-1, worker.JobCount(), "Job count is wrong")
 	}
 }
 
@@ -137,7 +137,7 @@ func TestWorkerShouldWorkSequentiallyWithOnlyOneGoroutine(t *testing.T) {
 
 	worker.Quit()
 
-	assert.NewAssert(t).Equal(<-resultCh, "0.1.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35."+
+	assert.Equal(t, "0.1.2.3.4.5.6.7.8.9.10.11.12.13.14.15.16.17.18.19.20.21.22.23.24.25.26.27.28.29.30.31.32.33.34.35."+
 		"36.37.38.39.40.41.42.43.44.45.46.47.48.49.50.51.52.53.54.55.56.57.58.59.60.61.62.63.64.65.66.67.68.69.70.71.72.73.74.75.76.77.78."+
-		"79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.", "Jobs were completed in wrong order or incompletely")
+		"79.80.81.82.83.84.85.86.87.88.89.90.91.92.93.94.95.96.97.98.99.", <-resultCh, "Jobs were completed in wrong order or incompletely")
 }

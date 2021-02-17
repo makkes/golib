@@ -1,5 +1,9 @@
-module e13.dev/golib
+module go.e13.dev/golib
 
-go 1.13
+go 1.16
 
-require github.com/makkes/assert v0.0.0-20180917162353-626235477f0d
+require (
+	github.com/stretchr/objx v0.3.0 // indirect
+	github.com/stretchr/testify v1.7.0 // indirect
+	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
+)

@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/makkes/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestMain(m *testing.M) {
@@ -21,7 +21,6 @@ func TestMain(m *testing.M) {
 }
 
 func TestTryZeroTimesShouldCallFunctionIndefinitelyAndEventuallyReturn(t *testing.T) {
-	a := assert.NewAssert(t)
 	cnt := 0
 	rand.Seed(time.Now().UnixNano())
 	successAfterNTries := rand.Intn(100000)
@@ -32,23 +31,21 @@ func TestTryZeroTimesShouldCallFunctionIndefinitelyAndEventuallyReturn(t *testin
 		}
 		return errors.New("Some error")
 	})
-	a.Equal(err, nil, "Try returned with an error")
-	a.Equal(cnt, successAfterNTries, "The callback wasn't called enough times")
+	assert.NoError(t, err, "Try returned with an error")
+	assert.Equal(t, cnt, successAfterNTries, "The callback wasn't called enough times")
 }
 
 func TestTryTwoTimesShouldCallPassingFunctionOnlyOnce(t *testing.T) {
-	a := assert.NewAssert(t)
 	called := 0
 	err := Try(2, 0, func() error {
 		called++
 		return nil
 	})
-	a.Equal(called, 1, fmt.Sprintf("f has been called %d times", called))
-	a.Equal(err, nil, "Try returned with an error")
+	assert.Equal(t, 1, called, fmt.Sprintf("f has been called %d times", called))
+	assert.NoError(t, err, "Try returned with an error")
 }
 
 func TestTryTwoTimesShouldCallFailingFunctionTwoTimes(t *testing.T) {
-	a := assert.NewAssert(t)
 	called := 0
 	err := Try(2, 0, func() error {
 		called++
@@ -57,6 +54,6 @@ func TestTryTwoTimesShouldCallFailingFunctionTwoTimes(t *testing.T) {
 		}
 		return nil
 	})
-	a.Equal(called, 2, fmt.Sprintf("f has been called %d times", called))
-	a.Equal(err, nil, "Try returned with an error")
+	assert.Equal(t, 2, called, "f has been called %d times", called)
+	assert.NoError(t, err, "Try returned with an error")
 }
