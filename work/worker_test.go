@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/stretchr/testify/assert"
-	"go.e13.dev/golib/work"
+	"go.e13.dev/golib/v2/work"
 )
 
 func Example() {

@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"go.e13.dev/golib/fs"
+	"go.e13.dev/golib/v2/fs"
 
 	"github.com/stretchr/testify/require"
 )

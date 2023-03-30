@@ -1,4 +1,4 @@
-module go.e13.dev/golib
+module go.e13.dev/golib/v2
 
 go 1.16
 
